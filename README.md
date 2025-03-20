@@ -118,6 +118,6 @@ curl -X DELETE http://localhost:3333/videos/ID_DO_VIDEO
 ---
 
 📌 **Gostou do projeto?** ⭐ Deixe um star no repositório e contribua com melhorias!  
-👨‍💻 **Autor:** [Seu Nome](https://github.com/seu-usuario)  
+👨‍💻 **Autor:** Bruno Mendes de Faria - https://github.com/brunomendesfaria
 
 🚀 **Let's Code!** 🎬
