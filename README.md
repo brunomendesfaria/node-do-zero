@@ -2,10 +2,6 @@
 🎥 Video API - Fastify + PostgreSQL (NeonDB)  - https://www.youtube.com/watch?v=hHM-hr9q4mo&amp;t=3980s
 
 
-Aqui está uma descrição detalhada e profissional para o seu repositório no **GitHub**:
-
----
-
 # 🎥 Video API - Fastify + PostgreSQL (NeonDB)
 
 Este é um projeto de **API REST** para gerenciamento de vídeos, desenvolvido com **Fastify**, **PostgreSQL** (NeonDB) e **Node.js**. A API permite a criação, listagem, atualização e exclusão de vídeos no banco de dados.
