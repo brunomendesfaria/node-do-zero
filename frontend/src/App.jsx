@@ -88,6 +88,7 @@ function App() {
           <li key={video.id}>
             <strong>{video.title}</strong> ({video.duration}s)
             <p>{video.description}</p>
+            <button onClick={() => setForm({ ...video, id: video.id })}>Editar</button> {/* 🔥 Aqui! */}
             <button onClick={() => handleDelete(video.id)}>Excluir</button>
           </li>
         ))}
