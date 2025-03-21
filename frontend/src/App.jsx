@@ -16,7 +16,6 @@ function App() {
   }, []);
 
   async function handleSubmit(e) {
-    console.log("excluindo")
     e.preventDefault();
     await fetch('https://node-do-zero-le2o.onrender.com/videos', {
       method: 'POST',
@@ -28,6 +27,8 @@ function App() {
   }
 
   async function handleDelete(id) {
+    
+    console.log("excluindo")
     const response = await fetch(`https://node-do-zero-le2o.onrender.com/videos/${id}`, {
       method: 'DELETE',
     });
