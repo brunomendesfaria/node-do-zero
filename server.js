@@ -9,6 +9,11 @@ await server.register(cors, {
   origin: '*', // idealmente usar o domínio do front em produção
 })
 
+await server.register(cors, {
+    origin: '*', // Ou use 'https://frontend-videos.onrender.com' para maior segurança
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // 🔥 Certifique-se de que DELETE está aqui!
+  })
+
 server.post('/videos', async (request, reply) => {
     const { title, description, duration } = request.body;
 
@@ -53,8 +58,7 @@ server.delete('/videos/:id', (request, reply) => {
 
     return reply.status(204).send()// Corrigido para chamar `send()`
 });
-
-
+ 
 server.listen({
     host: '0.0.0.0',
     port: process.env.port ?? 3333,
