@@ -6,18 +6,18 @@ function App() {
   const [search, setSearch] = useState('');
 
   async function fetchVideos(searchTerm = '') {
-    const response = await fetch(`http://localhost:3333/videos?search=${searchTerm}`);
+    const response = await fetch(`http://node-do-zero.onrender.com/videos?search=${searchTerm}`);
     const data = await response.json();
     setVideos(data);
-  }
-
+  } 
+  
   useEffect(() => {
     fetchVideos();
   }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await fetch('http://localhost:3333/videos', {
+    await fetch('http://node-do-zero.onrender.com/videos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
@@ -27,7 +27,7 @@ function App() {
   }
 
   async function handleDelete(id) {
-    await fetch(`http://localhost:3333/videos/${id}`, {
+    await fetch(`http://node-do-zero.onrender.com/videos/${id}`, {
       method: 'DELETE',
     });
     fetchVideos();
