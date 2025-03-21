@@ -27,18 +27,26 @@ function App() {
   }
 
   async function handleDelete(id) {
-    
-    console.log("excluindo")
-    const response = await fetch(`https://node-do-zero-le2o.onrender.com/videos/${id}`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) {
-      setVideos((prevVideos) => prevVideos.filter((video) => video.id !== id));
-    } else {
-      console.error('Erro ao excluir vídeo');
+    console.log("Tentando excluir vídeo ID:", id);
+  
+    try {
+      const response = await fetch(`https://node-do-zero-le2o.onrender.com/videos/${id}`, {
+        method: 'DELETE',
+      });
+  
+      console.log("Resposta do servidor:", response.status);
+  
+      if (response.ok) {
+        setVideos((prevVideos) => prevVideos.filter((video) => video.id !== id));
+        console.log("Vídeo excluído com sucesso!");
+      } else {
+        console.error("Erro ao excluir vídeo:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Erro de rede ao excluir vídeo:", error);
     }
   }
+  
 
   return (
     <div style={{ padding: '2rem' }}>
