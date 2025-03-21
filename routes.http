@@ -24,13 +24,13 @@ GET http://localhost:3333/videos?search=node
 
 ###
 
-GET http://localhost:3333/videos
+GET https://node-do-zero-le2o.onrender.com/videos
 
 
 
 ###
 
-PUT http://localhost:3333/videos/2319eb34-11f7-47d4-a194-4056b3dff2fb
+PUT http://node-do-zero-le2o.onrender.com/videos/2319eb34-11f7-47d4-a194-4056b3dff2fb
 Content-Type: application/json
 
 {
@@ -42,5 +42,5 @@ Content-Type: application/json
 
 ###
  
-delete http://localhost:3333/videos/669c760f-e0bc-4877-a95f-dd7c0cf2baef
+delete http://localhost:3333/videos/2319eb34-11f7-47d4-a194-4056b3dff2fb
  

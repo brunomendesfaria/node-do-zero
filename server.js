@@ -1,9 +1,13 @@
 import { fastify } from 'fastify'
 import { DatabasePostgres } from './database-postgres.js'
-
-const server = fastify()
+import cors from '@fastify/cors';
 
 const database = new DatabasePostgres()
+
+const server = fastify()
+await server.register(cors, {
+  origin: '*', // idealmente usar o domínio do front em produção
+})
 
 server.post('/videos', async (request, reply) => {
     const { title, description, duration } = request.body;
@@ -19,11 +23,10 @@ server.post('/videos', async (request, reply) => {
 
 server.get('/videos', async (request, reply) => {
     const search = request.query.search || "";
-    console.log(search);
     const videos = await database.list(search);
-
     return reply.send(videos);
-});
+  });
+  
 
 server.put('/videos/:id', (request, reply) => {
     const videoId = request.params.id 
