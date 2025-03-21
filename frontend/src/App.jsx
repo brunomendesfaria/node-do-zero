@@ -14,28 +14,50 @@ function App() {
   useEffect(() => {
     fetchVideos();
   }, []);
-
   async function handleSubmit(e) {
     e.preventDefault();
-    await fetch('https://node-do-zero-le2o.onrender.com/videos', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
-    setForm({ title: '', description: '', duration: 0 });
-    fetchVideos();
+
+    if (form.id) {
+      // Editando vídeo existente
+      await fetch(`https://node-do-zero-le2o.onrender.com/videos/${form.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: form.title,
+          description: form.description,
+          duration: form.duration,
+        }),
+      });
+    } else {
+      // Criando um novo vídeo
+      await fetch('https://node-do-zero-le2o.onrender.com/videos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+    }
+
+    setForm({ title: '', description: '', duration: 0 }); // 🔥 Agora limpa corretamente
+    fetchVideos(); // Atualiza a lista
   }
+
+  async function handleEdit(video) {
+    setForm(video); // 🔥 Preenche o formulário com os dados do vídeo para edição
+  }
+
+
+
 
   async function handleDelete(id) {
     console.log("Tentando excluir vídeo ID:", id);
-  
+
     try {
       const response = await fetch(`https://node-do-zero-le2o.onrender.com/videos/${id}`, {
         method: 'DELETE',
       });
-  
+
       console.log("Resposta do servidor:", response.status);
-  
+
       if (response.ok) {
         setVideos((prevVideos) => prevVideos.filter((video) => video.id !== id));
         console.log("Vídeo excluído com sucesso!");
@@ -46,7 +68,7 @@ function App() {
       console.error("Erro de rede ao excluir vídeo:", error);
     }
   }
-  
+
 
   return (
     <div style={{ padding: '2rem' }}>
@@ -69,7 +91,9 @@ function App() {
           value={form.duration}
           onChange={(e) => setForm({ ...form, duration: Number(e.target.value) })}
         />
-        <button type="submit">Salvar</button>
+        <button type="submit">
+          {form.id ? 'Atualizar' : 'Salvar'}
+        </button>
       </form>
 
       <hr />
@@ -88,7 +112,7 @@ function App() {
           <li key={video.id}>
             <strong>{video.title}</strong> ({video.duration}s)
             <p>{video.description}</p>
-            <button onClick={() => setForm({ ...video, id: video.id })}>Editar</button> {/* 🔥 Aqui! */}
+            <button onClick={() => handleEdit(video)}>Editar</button>
             <button onClick={() => handleDelete(video.id)}>Excluir</button>
           </li>
         ))}

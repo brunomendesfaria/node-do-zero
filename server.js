@@ -32,19 +32,19 @@ server.get('/videos', async (request, reply) => {
   });
   
 
-server.put('/videos/:id', (request, reply) => {
-    const videoId = request.params.id 
+  server.put('/videos/:id', async (request, reply) => {
+    const videoId = request.params.id;
     const { title, description, duration } = request.body;
 
-    const updated = database.update(videoId, { title, description, duration });
+    const updated = await database.update(videoId, { title, description, duration }); // 🔥 Adicionando await
 
     if (!updated) {
-        return reply.status(404).send({ error: "Video not found" });
-        console.log(updated)
+        return reply.status(404).send({ error: "Vídeo não encontrado" });
     }
 
-    return reply.status(204).send()// Enviando a resposta corretamente
+    return reply.status(200).send({ message: "Vídeo atualizado com sucesso!" });
 });
+
 
 server.delete('/videos/:id', (request, reply) => {
     const videoId = request.params.id;

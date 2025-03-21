@@ -25,7 +25,7 @@ export class DatabasePostgres {
         
 
     }
-
+    
     async update(id, video) {
         const { title, description, duration } = video;
     
