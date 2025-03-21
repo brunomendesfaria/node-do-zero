@@ -1,13 +1,14 @@
-import { fastify } from 'fastify'
-import { DatabasePostgres } from './database-postgres.js'
-import { cors }  from '@fastify/cors';
-
-const database = new DatabasePostgres()
+import { fastify } from 'fastify';
+import { DatabasePostgres } from './database-postgres.js';
+import cors from '@fastify/cors';
 
 const server = fastify()
 await server.register(cors, {
   origin: '*', // idealmente usar o domínio do front em produção
 })
+
+
+const database = new DatabasePostgres()
 
 await server.register(cors, {
     origin: '*', // Ou use 'https://frontend-videos.onrender.com' para maior segurança
