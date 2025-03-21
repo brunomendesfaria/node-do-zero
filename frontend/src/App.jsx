@@ -9,7 +9,7 @@ function App() {
     const response = await fetch(`https://node-do-zero-le2o.onrender.com/videos?search=${searchTerm}`);
     const data = await response.json();
     setVideos(data);
-  } 
+  }
 
   useEffect(() => {
     fetchVideos();
@@ -17,7 +17,7 @@ function App() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await fetch('https://node-do-zero-le2o.onrender.com/videos', { 
+    await fetch('https://node-do-zero-le2o.onrender.com/videos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
@@ -27,10 +27,15 @@ function App() {
   }
 
   async function handleDelete(id) {
-    await fetch(`https://node-do-zero-le2o.onrender.com/videos/${id}`, {
+    const response = await fetch(`https://node-do-zero-le2o.onrender.com/videos/${id}`, {
       method: 'DELETE',
     });
-    fetchVideos();
+
+    if (response.ok) {
+      setVideos((prevVideos) => prevVideos.filter((video) => video.id !== id));
+    } else {
+      console.error('Erro ao excluir vídeo');
+    }
   }
 
   return (

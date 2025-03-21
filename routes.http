@@ -30,12 +30,12 @@ GET https://node-do-zero-le2o.onrender.com/videos
 
 ###
 
-PUT http://node-do-zero-le2o.onrender.com/videos/2319eb34-11f7-47d4-a194-4056b3dff2fb
+PUT http://node-do-zero-le2o.onrender.com/videos/e4d15248-b1d9-42aa-a1ec-94fdea5337d5
 Content-Type: application/json
 
 {
     //"id": "2319eb34-11f7-47d4-a194-4056b3dff2fb",
-    "title": "Video node",
+    "title": "Video node 900m",
     "description": "Esse é o video node",
     "duration": 900
 }
