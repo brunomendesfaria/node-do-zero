@@ -116,16 +116,27 @@ function App() {
         }}
       />
 
-      <ul>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+        gap: '16px',
+        paddingTop: '16px'
+      }}>
         {videos.map((video) => (
-          <li key={video.id}>
+          <div key={video.id} style={{
+            backgroundColor: '#222',
+            padding: '16px',
+            borderRadius: '8px',
+            textAlign: 'center'
+          }}>
             <strong>{video.title}</strong> ({video.duration}s)
             <p>{video.description}</p>
-            <button onClick={() => handleEdit(video)}>Editar</button>
+            <button onClick={() => handleEdit(video)} style={{ marginRight: '8px' }}>Editar</button>
             <button onClick={() => handleDelete(video.id)}>Excluir</button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
+
     </div>
   );
 }
