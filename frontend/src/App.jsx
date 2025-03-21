@@ -94,6 +94,15 @@ function App() {
         <button type="submit">
           {form.id ? 'Atualizar' : 'Salvar'}
         </button>
+        {form.id && (
+          <button
+            type="button"
+            style={{ marginLeft: '10px' }}
+            onClick={() => setForm({ id: undefined, title: '', description: '', duration: 0 })}
+          >
+            Cancelar Edição
+          </button>
+        )}
       </form>
 
       <hr />
