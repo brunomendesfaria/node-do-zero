@@ -71,6 +71,7 @@ button {
 button[type="submit"] {
   background-color: #28a745;
   color: white;
+  margin-left: 10px;
 }
 
 button[type="button"] {
@@ -87,6 +88,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  box-shadow: #28a745;
 }
 
 th, td {
