@@ -116,31 +116,36 @@ function App() {
         }}
       />
 
-      <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+      <table>
         <thead>
-          <tr style={{ backgroundColor: '#333', color: 'white' }}>
-            <th style={{ padding: '10px', border: '1px solid #555' }}>ID</th>
-            <th style={{ padding: '10px', border: '1px solid #555' }}>Título</th>
-            <th style={{ padding: '10px', border: '1px solid #555' }}>Descrição</th>
-            <th style={{ padding: '10px', border: '1px solid #555' }}>Duração</th>
-            <th style={{ padding: '10px', border: '1px solid #555' }}>Ações</th>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Duração</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
           {videos.map((video) => (
-            <tr key={video.id} style={{ backgroundColor: '#222', color: 'white', textAlign: 'center' }}>
-              <td style={{ padding: '10px', border: '1px solid #555' }}>{video.id}</td>
-              <td style={{ padding: '10px', border: '1px solid #555' }}>{video.title}</td>
-              <td style={{ padding: '10px', border: '1px solid #555' }}>{video.description}</td>
-              <td style={{ padding: '10px', border: '1px solid #555' }}>{video.duration}s</td>
-              <td style={{ padding: '10px', border: '1px solid #555' }}>
-                <button onClick={() => handleEdit(video)} style={{ marginRight: '5px' }}>Editar</button>
-                <button onClick={() => handleDelete(video.id)}>Excluir</button>
+            <tr key={video.id}>
+              <td>{video.id}</td>
+              <td>{video.title}</td>
+              <td>{video.description}</td>
+              <td>{video.duration}s</td>
+              <td>
+                <button onClick={() => handleEdit(video)} style={{ marginRight: '5px' }}>
+                  Editar
+                </button>
+                <button onClick={() => handleDelete(video.id)}>
+                  Excluir
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+
 
 
     </div>
