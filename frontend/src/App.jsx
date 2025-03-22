@@ -91,6 +91,7 @@ function App() {
           value={form.duration}
           onChange={(e) => setForm({ ...form, duration: Number(e.target.value) })}
         />
+        <div className="form-buttons"></div>
         <button type="submit">
           {form.id ? 'Atualizar' : 'Salvar'}
         </button>

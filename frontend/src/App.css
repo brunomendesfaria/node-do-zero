@@ -83,13 +83,22 @@ button:hover {
   opacity: 0.8;
 }
 
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
 /* ===== Estilos da Tabela ===== */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  box-shadow: #28a745;
-  border: 1px;
+  border: 2px solid #555;
+  border-radius: 6px;
+  overflow: hidden;
+  
 }
 
 th, td {
@@ -102,8 +111,8 @@ thead {
   background-color: #333;
 }
 
-tbody tr {
-  background-color: #222;
+tbody tr:nth-child(even) {
+  background-color: #1c1c1c;
 }
 
 /* ===== Responsividade ===== */
