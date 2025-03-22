@@ -91,7 +91,7 @@ function App() {
           value={form.duration}
           onChange={(e) => setForm({ ...form, duration: Number(e.target.value) })}
         />
-        <button type="submit">
+        <button type="submit" style={{ marginLeft: '10px' }}>
           {form.id ? 'Atualizar' : 'Salvar'}
         </button>
         {form.id && (
@@ -145,9 +145,6 @@ function App() {
           ))}
         </tbody>
       </table>
-
-
-
     </div>
   );
 }
