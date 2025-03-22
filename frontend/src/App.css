@@ -108,7 +108,7 @@ th, td {
 }
 
 thead {
-  background-color: white;
+  background-color: #555;
 }
 
 tbody tr:nth-child(even) {
