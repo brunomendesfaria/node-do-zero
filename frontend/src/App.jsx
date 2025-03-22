@@ -128,8 +128,7 @@ function App() {
         </thead>
         <tbody>
           {videos.map((video) => (
-            <tr key={video.id}>
-              <td>{video.id}</td>
+            <tr key={video.id}> 
               <td>{video.title}</td>
               <td>{video.description}</td>
               <td>{video.duration}s</td>
