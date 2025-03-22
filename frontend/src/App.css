@@ -89,6 +89,7 @@ table {
   border-collapse: collapse;
   margin-top: 20px;
   box-shadow: #28a745;
+  border: 1px;
 }
 
 th, td {
