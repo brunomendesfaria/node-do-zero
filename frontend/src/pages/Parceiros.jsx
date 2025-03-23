@@ -133,7 +133,7 @@ function Parceiros() {
           <option value="transportadora">Transportadora</option>
         </select>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+       
           <IconButton
             icon={FaSyncAlt}
             title={editId ? "Atualizar" : "Cadastrar"}
@@ -148,8 +148,7 @@ function Parceiros() {
               color="red"
               onClick={handleCancel}
             />
-          )}
-        </div>
+          )} 
       </form>
 
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
