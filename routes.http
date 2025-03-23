@@ -47,6 +47,14 @@ Content-Type: application/json
 }
 
 ###
+
+PUT http://node-do-zero-le2o.onrender.com/subcategorias/id:e081faff-b588-4a28-bf5b-3a3b15e94b8a
+Content-Type: application/json
+{
+ "nome": "décimo terceiro"
+}
+
+###
  
 delete http://node-do-zero-le2o.onrender.com/videos/bbea3469-7c14-4c2d-9eb6-e173ca577c21
  
