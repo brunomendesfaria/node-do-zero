@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { FaEdit, FaTrash, FaSyncAlt, FaTimes } from "react-icons/fa";
+import IconButton from "../components/IconButton";
 
 function CategoriaPage() {
   const [nome, setNome] = useState("");
@@ -28,8 +30,7 @@ function CategoriaPage() {
       body: JSON.stringify({ nome }),
     });
 
-    setNome("");
-    setEditId(null);
+    resetForm();
     fetchCategorias();
   }
 
@@ -38,9 +39,15 @@ function CategoriaPage() {
     fetchCategorias();
   }
 
+  function resetForm() {
+    setNome("");
+    setEditId(null);
+  }
+
   return (
     <div>
       <h2>📁 Cadastro de Categorias</h2>
+
       <form onSubmit={handleSubmit} style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
         <input
           placeholder="Nova Categoria"
@@ -48,12 +55,22 @@ function CategoriaPage() {
           onChange={(e) => setNome(e.target.value)}
           style={{ flex: 1 }}
         />
-        <button type="submit">{editId ? "Atualizar" : "Cadastrar"}</button>
+
+        <IconButton
+          icon={FaSyncAlt}
+          type="submit"
+          title={editId ? "Atualizar" : "Cadastrar"}
+          color="success"
+        />
+
         {editId && (
-          <button type="button" onClick={() => {
-            setNome("");
-            setEditId(null);
-          }}>Cancelar</button>
+          <IconButton
+            icon={FaTimes}
+            type="button"
+            onClick={resetForm}
+            title="Cancelar"
+            color="danger"
+          />
         )}
       </form>
 
@@ -69,11 +86,21 @@ function CategoriaPage() {
             <tr key={cat.id} style={{ background: "#222", color: "#fff" }}>
               <td style={{ padding: "10px", border: "1px solid #555" }}>{cat.nome}</td>
               <td style={{ padding: "10px", border: "1px solid #555" }}>
-                <button onClick={() => {
-                  setEditId(cat.id);
-                  setNome(cat.nome);
-                }}>Editar</button>
-                <button onClick={() => handleDelete(cat.id)}>Excluir</button>
+                <IconButton
+                  icon={FaEdit}
+                  onClick={() => {
+                    setEditId(cat.id);
+                    setNome(cat.nome);
+                  }}
+                  title="Editar"
+                  color="warning"
+                />
+                <IconButton
+                  icon={FaTrash}
+                  onClick={() => handleDelete(cat.id)}
+                  title="Excluir"
+                  color="danger"
+                />
               </td>
             </tr>
           ))}
