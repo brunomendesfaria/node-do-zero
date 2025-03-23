@@ -16,28 +16,28 @@ export async function financeRoutes(server) {
   });
 
   // PUT categoria
-server.put('/categorias/:id', async (request, reply) => {
-  const { id } = request.params;
-  const { nome } = request.body;
+  server.put('/categorias/:id', async (request, reply) => {
+    const { id } = request.params;
+    const { nome } = request.body;
 
-  await sql`UPDATE categorias SET nome = ${nome} WHERE id = ${id}`;
-  return reply.status(200).send({ message: 'Categoria atualizada com sucesso!' });
-});
+    await sql`UPDATE categorias SET nome = ${nome} WHERE id = ${id}`;
+    return reply.status(200).send({ message: 'Categoria atualizada com sucesso!' });
+  });
 
-// DELETE categoria (somente se não houver subcategoria)
-server.delete('/categorias/:id', async (request, reply) => {
-  const { id } = request.params;
+  // DELETE categoria (somente se não houver subcategoria)
+  server.delete('/categorias/:id', async (request, reply) => {
+    const { id } = request.params;
 
-  const subcats = await sql`SELECT 1 FROM subcategorias WHERE categoria_id = ${id} LIMIT 1`;
-  if (subcats.length > 0) {
-    return reply.status(400).send({ error: 'Não é possível excluir categoria com subcategorias vinculadas.' });
-  }
+    const subcats = await sql`SELECT 1 FROM subcategorias WHERE categoria_id = ${id} LIMIT 1`;
+    if (subcats.length > 0) {
+      return reply.status(400).send({ error: 'Não é possível excluir categoria com subcategorias vinculadas.' });
+    }
 
-  await sql`DELETE FROM categorias WHERE id = ${id}`;
-  return reply.status(204).send();
-});
+    await sql`DELETE FROM categorias WHERE id = ${id}`;
+    return reply.status(204).send();
+  });
 
-  
+
   // SUBCATEGORIAS
   server.post('/subcategorias', async (request, reply) => {
     const { nome, categoria_id } = request.body;
@@ -46,8 +46,8 @@ server.delete('/categorias/:id', async (request, reply) => {
   });
 
 
-server.get('/subcategorias', async (req, reply) => {
-  const result = await sql`
+  server.get('/subcategorias', async (req, reply) => {
+    const result = await sql`
     SELECT 
       sub.id,
       sub.nome,
@@ -57,16 +57,30 @@ server.get('/subcategorias', async (req, reply) => {
     JOIN categorias cat ON sub.categoria_id = cat.id
   `;
 
-  return reply.send(result);
-});
+    return reply.send(result);
+  });
 
-server.delete('/subcategorias/:id', async (request, reply) => {
-  const { id } = request.params;
+  server.put('/subcategorias/:id', async (request, reply) => {
+    const { id } = request.params;
+    const { nome, categoria_id } = request.body;
 
-  await sql`DELETE FROM subcategorias WHERE id = ${id}`;
+    await sql`
+    UPDATE subcategorias
+    SET nome = ${nome}, categoria_id = ${categoria_id}
+    WHERE id = ${id}
+  `;
 
-  return reply.status(204).send();
-});
+    return reply.status(200).send({ message: "Subcategoria atualizada com sucesso!" });
+  });
+
+
+  server.delete('/subcategorias/:id', async (request, reply) => {
+    const { id } = request.params;
+
+    await sql`DELETE FROM subcategorias WHERE id = ${id}`;
+
+    return reply.status(204).send();
+  });
 
 
   // PARCEIROS
