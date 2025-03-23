@@ -1,3 +1,4 @@
+import { FaEdit, FaTrash } from "react-icons/fa"; // lá no topo do arquivo
 import { useEffect, useState } from "react";
 
 function SubcategoriaPage() {
@@ -122,10 +123,20 @@ function SubcategoriaPage() {
                     setSubNome(sub.nome);
                     setCategoriaId(sub.categoria_id);
                   }}
+                  title="Editar"
+                  style={{ background: "transparent", border: "none", cursor: "pointer", marginRight: "10px" }}
                 >
-                  Editar
+                  <FaEdit color="#ffc107" size={18} />
                 </button>
-                <button onClick={() => handleDelete(sub.id)}>Excluir</button>
+
+                <button
+                  onClick={() => handleDelete(sub.id)}
+                  title="Excluir"
+                  style={{ background: "transparent", border: "none", cursor: "pointer" }}
+                >
+                  <FaTrash color="#dc3545" size={18} />
+                </button>
+
               </td>
             </tr>
           ))}
