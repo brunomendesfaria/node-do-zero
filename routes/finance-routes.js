@@ -84,30 +84,58 @@ export async function financeRoutes(server) {
 
 
   // PARCEIROS
-  server.post('/parceiros', async (request, reply) => {
+  // PUT - Atualizar parceiro
+  server.put('/parceiros/:id', async (request, reply) => {
+    const { id } = request.params;
     const {
       nome, documento, email, telefone, cep,
       logradouro, complemento, bairro, cidade,
       uf, classificacao
     } = request.body;
-  
-    const id = crypto.randomUUID();
-  
-    await sql`
-      INSERT INTO parceiros (
-        id, nome, documento, email, telefone, cep,
-        logradouro, complemento, bairro, cidade,
-        uf, classificacao
-      ) VALUES (
-        ${id}, ${nome}, ${documento}, ${email}, ${telefone}, ${cep},
-        ${logradouro}, ${complemento}, ${bairro}, ${cidade},
-        ${uf}, ${classificacao}
-      )
-    `;
-  
-    return reply.status(201).send({ id });
+
+    const result = await sql`
+    UPDATE parceiros SET 
+      nome = ${nome},
+      documento = ${documento},
+      email = ${email},
+      telefone = ${telefone},
+      cep = ${cep},
+      logradouro = ${logradouro},
+      complemento = ${complemento},
+      bairro = ${bairro},
+      cidade = ${cidade},
+      uf = ${uf},
+      classificacao = ${classificacao}
+    WHERE id = ${id}
+    RETURNING id
+  `;
+
+    if (result.length === 0) {
+      return reply.status(404).send({ error: 'Parceiro não encontrado.' });
+    }
+
+    return reply.status(200).send({ message: 'Parceiro atualizado com sucesso!' });
   });
-  
+
+  // DELETE - Excluir parceiro
+  server.delete('/parceiros/:id', async (request, reply) => {
+    const { id } = request.params;
+
+    // Verificar se parceiro está vinculado a lançamentos
+    const vinculado = await sql`SELECT 1 FROM lancamentos WHERE parceiro_id = ${id} LIMIT 1`;
+    if (vinculado.length > 0) {
+      return reply.status(400).send({ error: 'Não é possível excluir um parceiro vinculado a lançamentos.' });
+    }
+
+    const result = await sql`DELETE FROM parceiros WHERE id = ${id} RETURNING id`;
+
+    if (result.length === 0) {
+      return reply.status(404).send({ error: 'Parceiro não encontrado.' });
+    }
+
+    return reply.status(204).send();
+  });
+
 
   server.get('/parceiros', async () => {
     const parceiros = await sql`SELECT * FROM parceiros`;
