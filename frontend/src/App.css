@@ -108,6 +108,8 @@ th, td {
 
 thead {
   background-color:#555 ;
+  padding: 2px;
+  font-size: 14px;
 }
 
 tbody tr:nth-child(even) {
@@ -117,7 +119,7 @@ tbody tr:nth-child(even) {
 /* ===== Responsividade ===== */
 @media (max-width: 768px) {
   table {
-    font-size: 14px;
+    font-size: 12px;
   }
   
   th, td {
