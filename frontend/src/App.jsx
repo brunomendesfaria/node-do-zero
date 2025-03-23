@@ -11,6 +11,7 @@ import './App.css';
 
 function App() {
   return (
+    <div className="fullscreen">
     <BrowserRouter>
       <div className="container">
         <nav className="menu">
@@ -37,6 +38,7 @@ function App() {
         </main>
       </div>
     </BrowserRouter>
+    </div>
   );
 }
 
