@@ -133,22 +133,22 @@ function Parceiros() {
           <option value="transportadora">Transportadora</option>
         </select>
 
-       
+
+        <IconButton
+          icon={FaSyncAlt}
+          type="submit"
+          title={editId ? "Atualizar" : "Cadastrar"}
+          color="success"
+        />
+
+        {editId && (
           <IconButton
-            icon={FaSyncAlt}
-            title={editId ? "Atualizar" : "Cadastrar"}
-            type="submit"
-            color="green"
+            icon={FaTimes}
+            onClick={handleCancel}
+            title="Cancelar"
+            color="danger"
           />
-          {editId && (
-            <IconButton
-              icon={FaTimes}
-              title="Cancelar"
-              type="button"
-              color="red"
-              onClick={handleCancel}
-            />
-          )} 
+        )}
       </form>
 
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
