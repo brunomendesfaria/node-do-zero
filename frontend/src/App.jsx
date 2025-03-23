@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Videos from 'frontend/src/pages/Videos';
-import Parceiros from 'frontend/src/pages/Parceiros';
-import Lancamentos from 'frontend/src/pages/Lancamentos';
-import ClassificacaoFinanceira from 'frontend/src/pages/ClassificacaoFinanceira';
-import CategoriaPage from 'frontend/src/pages/CategoriaPage';
-import SubcategoriaPage from 'frontend/src/pages/SubcategoriaPage';
+import Videos from './frontend/src/pages/Videos';
+import Parceiros from './frontend/src/pages/Parceiros';
+import Lancamentos from './frontend/src/pages/Lancamentos';
+import ClassificacaoFinanceira from './frontend/src/pages/ClassificacaoFinanceira';
+import CategoriaPage from './frontend/src/pages/CategoriaPage';
+import SubcategoriaPage from './frontend/src/pages/SubcategoriaPage';
 
 import './App.css';
 
