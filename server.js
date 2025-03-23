@@ -1,7 +1,7 @@
 import { fastify } from 'fastify';
 import { DatabasePostgres } from './database-postgres.js';
 import cors from '@fastify/cors';
-import { financeRoutes } from './financeroutes.js';
+import { financeRoutes } from './finance-routes.js';
 
 await server.register(financeRoutes);
 
