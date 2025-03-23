@@ -1,6 +1,6 @@
 // db/videos-db.js
 import { randomUUID } from 'node:crypto';
-import { sql } from '../routes/sql.js';
+import { sql } from '../sql.js';
 
 export const VideosDB = {
   async list(search) {

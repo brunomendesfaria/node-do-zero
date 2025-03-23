@@ -1,6 +1,6 @@
 // finance-routes.js
 import { randomUUID } from 'node:crypto';
-import { sql } from './sql.js';
+import { sql } from '../sql.js';
 
 export async function financeRoutes(server) {
   // CATEGORIAS
