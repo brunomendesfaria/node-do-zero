@@ -1,3 +1,4 @@
+import IconButton from "../components/IconButton";
 import { FaEdit, FaTrash, FaSyncAlt, FaTimes } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
@@ -85,25 +86,21 @@ function SubcategoriaPage() {
           ))}
         </select>
 
-        <button
+        <IconButton
+          icon={FaSyncAlt}
           type="submit"
           title={editId ? "Atualizar" : "Cadastrar"}
-          style={{ backgroundColor: "#28a745", color: "#fff", border: "none", padding: "6px 10px", cursor: "pointer" }}
-        >
-          {editId ? <FaSyncAlt size={16} /> : "Cadastrar"}
-        </button>
+          color="success"
+        />
 
         {editId && (
-          <button
-            type="button"
-            title="Cancelar"
+          <IconButton
+            icon={FaTimes}
             onClick={resetForm}
-            style={{ backgroundColor: "#dc3545", color: "#fff", border: "none", padding: "6px 10px", marginLeft: "5px", cursor: "pointer" }}
-          >
-            <FaTimes size={16} />
-          </button>
+            title="Cancelar"
+            color="danger"
+          />
         )}
-
       </form>
 
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
@@ -130,25 +127,22 @@ function SubcategoriaPage() {
                 {sub.nome}
               </td>
               <td style={{ padding: "5px", border: "1px solid #555" }}>
-                <button
+                <IconButton
+                  icon={FaEdit}
                   onClick={() => {
                     setEditId(sub.id);
                     setSubNome(sub.nome);
                     setCategoriaId(sub.categoria_id);
                   }}
                   title="Editar"
-                  style={{ background: "transparent", border: "none", cursor: "pointer", marginRight: "10px" }}
-                >
-                  <FaEdit color="#ffc107" size={18} />
-                </button>
-
-                <button
+                  color="warning"
+                />
+                <IconButton
+                  icon={FaTrash}
                   onClick={() => handleDelete(sub.id)}
                   title="Excluir"
-                  style={{ background: "transparent", border: "none", cursor: "pointer" }}
-                >
-                  <FaTrash color="#dc3545" size={18} />
-                </button>
+                  color="danger"
+                />
 
               </td>
             </tr>
