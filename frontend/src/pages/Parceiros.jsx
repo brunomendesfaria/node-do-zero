@@ -169,8 +169,8 @@ function Parceiros() {
               <td style={{ padding: "10px", border: "1px solid #555" }}>{p.cidade}</td>
               <td style={{ padding: "10px", border: "1px solid #555" }}>{p.classificacao}</td>
               <td style={{ padding: "10px", border: "1px solid #555" }}>
-                <IconButton icon={FaEdit} title="Editar" onClick={() => handleEdit(p)} color="yellow" />
-                <IconButton icon={FaTrash} title="Excluir" onClick={() => handleDelete(p.id)} color="red" />
+                <IconButton icon={FaEdit} title="Editar" onClick={() => handleEdit(p)} color="warning" />
+                <IconButton icon={FaTrash} title="Excluir" onClick={() => handleDelete(p.id)} color="danger" />
               </td>
             </tr>
           ))}
