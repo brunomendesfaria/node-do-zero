@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto" 
-import { sql } from './sql.js'
+import { sql } from './routes/sql.js'
 
 export class DatabasePostgres {
 
