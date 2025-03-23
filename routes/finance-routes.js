@@ -15,6 +15,15 @@ export async function financeRoutes(server) {
     return categorias;
   });
 
+  server.delete('/subcategorias/:id', async (request, reply) => {
+    const { id } = request.params;
+  
+    await sql`DELETE FROM subcategorias WHERE id = ${id}`;
+  
+    return reply.status(204).send();
+  });
+  
+
   // SUBCATEGORIAS
   server.post('/subcategorias', async (request, reply) => {
     const { nome, categoria_id } = request.body;
