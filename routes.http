@@ -58,3 +58,21 @@ Content-Type: application/json
  
 delete http://node-do-zero-le2o.onrender.com/videos/bbea3469-7c14-4c2d-9eb6-e173ca577c21
  
+
+###
+ 
+POST http://node-do-zero-le2o.onrender.com/parceiros
+Content-Type: application/json
+ {
+    "nome": "Padaria São João",
+    "documento": "12345678000100",
+    "email": "padaria@exemplo.com",
+    "telefone": "11999998888",
+    "cep": "01001-000",
+    "logradouro": "Praça da Sé",
+    "complemento": "lado ímpar",
+    "bairro": "Sé",
+    "cidade": "São Paulo",
+    "uf": "SP",
+    "classificacao": "fornecedor"
+}
