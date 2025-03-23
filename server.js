@@ -1,9 +1,15 @@
 import { fastify } from 'fastify';
 import { DatabasePostgres } from './database-postgres.js';
 import cors from '@fastify/cors';
+import { financeRoutes } from './finance-routes.js';
+
+await server.register(financeRoutes);
+
 
 const server = fastify();
 const database = new DatabasePostgres();
+
+await database.createTables(); // ✅ Cria as tabelas se não existirem
 
 // ✅ Se já estiver registrado, não tente registrar de novo!
 if (!server.hasDecorator('corsPreflightEnabled')) {
@@ -14,7 +20,7 @@ if (!server.hasDecorator('corsPreflightEnabled')) {
 }
  
 server.post('/videos', async (request, reply) => {
-    const { title, description, duration } = request.body;
+    const { title, description, duration, gerero } = request.body;
 
     const videoID = await database.create({
         title,
@@ -34,9 +40,9 @@ server.get('/videos', async (request, reply) => {
 
   server.put('/videos/:id', async (request, reply) => {
     const videoId = request.params.id;
-    const { title, description, duration } = request.body;
+    const { title, description, duration,genero } = request.body;
 
-    const updated = await database.update(videoId, { title, description, duration }); // 🔥 Adicionando await
+    const updated = await database.update(videoId, { title, description, duration, genero }); // 🔥 Adicionando await
 
     if (!updated) {
         return reply.status(404).send({ error: "Vídeo não encontrado" });

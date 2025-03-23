@@ -125,6 +125,7 @@ function App() {
             <th>Descrição</th>
             <th>Duração</th>
             <th>Ações</th>
+            <th>Genêro</th>
           </tr>
         </thead>
         <tbody>
@@ -132,7 +133,8 @@ function App() {
             <tr key={video.id}> 
               <td>{video.title}</td>
               <td>{video.description}</td>
-              <td>{video.duration}s</td>
+              <td>{video.duration}</td>
+              <td>{video.genero}</td>
               <td>
                 <button onClick={() => handleEdit(video)} style={{ marginRight: '5px' }}>
                   Editar
