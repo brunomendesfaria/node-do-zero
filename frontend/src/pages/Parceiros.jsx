@@ -59,13 +59,24 @@ function Parceiros() {
     const url = editId
       ? `${API}/parceiros/${editId}`
       : `${API}/parceiros`;
-
+      
     await fetch(url, {
       method,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form)
+      body: JSON.stringify({
+        nome: form.nome,
+        documento: form.documento,
+        email: form.email,
+        telefone: form.telefone,
+        cep: form.cep,
+        logradouro: form.logradouro,
+        complemento: form.complemento,
+        bairro: form.bairro,
+        cidade: form.cidade,
+        uf: form.uf,
+        classificacao: form.classificacao
+      })
     });
-
     setForm({
       nome: "",
       documento: "",
@@ -89,9 +100,23 @@ function Parceiros() {
   }
 
   function handleEdit(parceiro) {
-    setForm(parceiro);
+    setForm({
+      id: parceiro.id,
+      nome: parceiro.nome || "",
+      documento: parceiro.documento || "",
+      email: parceiro.email || "",
+      telefone: parceiro.telefone || "",
+      cep: parceiro.cep || "",
+      logradouro: parceiro.logradouro || "",
+      complemento: parceiro.complemento || "",
+      bairro: parceiro.bairro || "",
+      cidade: parceiro.cidade || "",
+      uf: parceiro.uf || "",
+      classificacao: parceiro.classificacao || ""
+    });
     setEditId(parceiro.id);
   }
+
 
   function handleCancel() {
     setForm({
