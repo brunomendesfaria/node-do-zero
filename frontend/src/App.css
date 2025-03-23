@@ -99,12 +99,11 @@ table {
   border-radius: 6px;          /* (opcional) cantos arredondados */
   overflow: hidden;            /* impede que o conteúdo vaze da borda */
 }
-
-
+ 
 th, td {
   padding: 10px;
   border: 1px solid #555;    /* ✅ Borda entre as células */
-  text-align: center;
+  text-align: center;  
 }
 
 thead {
