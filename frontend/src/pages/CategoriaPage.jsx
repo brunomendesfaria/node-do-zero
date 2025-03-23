@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaEdit, FaTrash, FaSyncAlt, FaTimes } from "react-icons/fa";
 import IconButton from "../components/IconButton";
 
+
 function CategoriaPage() {
   const [nome, setNome] = useState("");
   const [categorias, setCategorias] = useState([]);
@@ -35,10 +36,15 @@ function CategoriaPage() {
   }
 
   async function handleDelete(id) {
-    await fetch(`${API}/categorias/${id}`, { method: "DELETE" });
-    fetchCategorias();
+    const res = await fetch(`${API}/categorias/${id}`, { method: "DELETE" });
+  
+    if (res.status === 400) {
+      const err = await res.json();
+      alert(err.error); // ou usar um toast
+    } else {
+      fetchCategorias();
+    }
   }
-
   function resetForm() {
     setNome("");
     setEditId(null);
