@@ -99,4 +99,28 @@ export class DatabasePostgres {
         return result.length > 0; // Retorna `
     }
     
+    async updateParceiro(id, parceiro) {
+      const {
+        nome, email, telefone, documento,
+        cep, logradouro, complemento, bairro,
+        cidade, uf, classificacao
+      } = parceiro;
+    
+      await sql`
+        UPDATE parceiros SET
+          nome = ${nome},
+          email = ${email},
+          telefone = ${telefone},
+          documento = ${documento},
+          cep = ${cep},
+          logradouro = ${logradouro},
+          complemento = ${complemento},
+          bairro = ${bairro},
+          cidade = ${cidade},
+          uf = ${uf},
+          classificacao = ${classificacao}
+        WHERE id = ${id}
+      `;
+    }
+    
 }

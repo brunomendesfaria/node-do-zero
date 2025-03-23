@@ -114,43 +114,6 @@ export async function financeRoutes(server) {
     return parceiros;
   });
 
-  server.put('/parceiros/:id', async (request, reply) => {
-    const { id } = request.params;
-    const {
-      nome,
-      documento,
-      email,
-      telefone,
-      cep,
-      logradouro,
-      complemento,
-      bairro,
-      cidade,
-      uf,
-      classificacao
-    } = request.body;
-  
-    const atualizado = await server.database.updateParceiro(id, {
-      nome,
-      documento,
-      email,
-      telefone,
-      cep,
-      logradouro,
-      complemento,
-      bairro,
-      cidade,
-      uf,
-      classificacao
-    });
-  
-    if (!atualizado) {
-      return reply.status(404).send({ error: 'Parceiro não encontrado' });
-    }
-  
-    return reply.status(200).send({ message: 'Parceiro atualizado com sucesso!' });
-  });
-  
 
   // LANÇAMENTOS
   server.post('/lancamentos', async (request, reply) => {
