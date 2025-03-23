@@ -116,7 +116,7 @@ function SubcategoriaPage() {
               <td style={{ padding: "10px", border: "1px solid #555" }}>
                 {sub.nome}
               </td>
-              <td style={{ padding: "10px", border: "1px solid #555" }}>
+              <td style={{ padding: "5px", border: "1px solid #555" }}>
                 <button
                   onClick={() => {
                     setEditId(sub.id);
