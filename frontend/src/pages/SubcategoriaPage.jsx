@@ -1,4 +1,4 @@
-import { FaEdit, FaTrash } from "react-icons/fa"; // lá no topo do arquivo
+import { FaEdit, FaTrash, FaSyncAlt, FaTimes } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 function SubcategoriaPage() {
@@ -85,12 +85,25 @@ function SubcategoriaPage() {
           ))}
         </select>
 
-        <button type="submit">{editId ? "Atualizar" : "Cadastrar"}</button>
+        <button
+          type="submit"
+          title={editId ? "Atualizar" : "Cadastrar"}
+          style={{ backgroundColor: "#28a745", color: "#fff", border: "none", padding: "6px 10px", cursor: "pointer" }}
+        >
+          {editId ? <FaSyncAlt size={16} /> : "Cadastrar"}
+        </button>
+
         {editId && (
-          <button type="button" onClick={resetForm}>
-            Cancelar
+          <button
+            type="button"
+            title="Cancelar"
+            onClick={resetForm}
+            style={{ backgroundColor: "#dc3545", color: "#fff", border: "none", padding: "6px 10px", marginLeft: "5px", cursor: "pointer" }}
+          >
+            <FaTimes size={16} />
           </button>
         )}
+
       </form>
 
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
