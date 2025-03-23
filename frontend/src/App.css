@@ -102,7 +102,7 @@ table {
  
 th, td {
   padding: 10px;
-  border: 1px solid #555;    /* ✅ Borda entre as células */
+  border: 1px solid #bbb8b8;    /* ✅ Borda entre as células */
   text-align: center;  
 }
 
