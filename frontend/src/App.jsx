@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Categorias from './pages/Categorias';
 import Parceiros from './pages/Parceiros';
 import Lancamentos from './pages/Lancamentos';
-import Videos from './pages/Videos'; // ✅ nova página
+import Videos from './pages/Videos';  
 
 
 import './App.css';
