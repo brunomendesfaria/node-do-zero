@@ -16,11 +16,24 @@ export const FinanceDB = {
       categoria_id UUID REFERENCES categorias(id)
     )`;
 
-    await sql`CREATE TABLE IF NOT EXISTS parceiros (
+
+    // 🧱 Tabela de Parceiros atualizada com todos os campos
+    await sql`
+    CREATE TABLE IF NOT EXISTS parceiros (
       id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
       nome TEXT NOT NULL,
+      documento TEXT,
+      email TEXT,
+      telefone TEXT,
+      cep TEXT,
+      logradouro TEXT,
+      complemento TEXT,
+      bairro TEXT,
+      cidade TEXT,
+      uf TEXT,
       classificacao TEXT CHECK (classificacao IN ('cliente', 'fornecedor', 'transportadora'))
-    )`;
+    )
+  `;
 
     await sql`CREATE TABLE IF NOT EXISTS lancamentos (
       id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
