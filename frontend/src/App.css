@@ -95,24 +95,24 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  border: 2px solid white;
-  border-radius: 6px;
-  overflow: hidden;
-  
+  border: 2px solid #555;     /* ✅ Borda externa da tabela */
+  border-radius: 6px;          /* (opcional) cantos arredondados */
+  overflow: hidden;            /* impede que o conteúdo vaze da borda */
 }
+
 
 th, td {
   padding: 10px;
-  border: 1px solid white;
+  border: 1px solid #555;    /* ✅ Borda entre as células */
   text-align: center;
 }
 
 thead {
-  background-color: #555;
+  background-color:#555 ;
 }
 
 tbody tr:nth-child(even) {
-  background-color: white;
+  background-color: #555;
 }
 
 /* ===== Responsividade ===== */
