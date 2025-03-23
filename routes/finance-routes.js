@@ -22,10 +22,19 @@ export async function financeRoutes(server) {
     return reply.status(201).send();
   });
 
-  server.get('/subcategorias', async () => {
-    const subcategorias = await sql`SELECT * FROM subcategorias`;
-    return subcategorias;
-  });
+server.get('/subcategorias', async (req, reply) => {
+  const result = await sql`
+    SELECT 
+      sub.id,
+      sub.nome,
+      sub.categoria_id,
+      cat.nome AS categoria_nome
+    FROM subcategorias sub
+    JOIN categorias cat ON sub.categoria_id = cat.id
+  `;
+
+  return reply.send(result);
+});
 
   // PARCEIROS
   server.post('/parceiros', async (request, reply) => {

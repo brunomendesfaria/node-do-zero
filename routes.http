@@ -21,10 +21,16 @@ Content-Type: application/json
 
 GET http://localhost:3333/videos?search=node
 
+###
+
+GET http://localhost:3333/subcategorias
 
 ###
 
 GET https://node-do-zero-le2o.onrender.com/videos
+
+####
+GET https://node-do-zero-le2o.onrender.com/subcategorias
 
 
 
