@@ -6,13 +6,12 @@ import ClassificacaoFinanceira from './pages/ClassificacaoFinanceira';
 import CategoriaPage from './pages/CategoriaPage';
 import SubcategoriaPage from './pages/SubcategoriaPage';
 
-
 import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="fullscreen">
+    <div className="fullscreen">
+      <BrowserRouter>
         <div className="container">
           <nav className="menu">
             <h2>📋 Menu</h2>
@@ -29,17 +28,14 @@ function App() {
               <Route path="/videos" element={<Videos />} />
               <Route path="/parceiros" element={<Parceiros />} />
               <Route path="/lancamentos" element={<Lancamentos />} />
-
-              {/* Classificação Financeira */}
               <Route path="/classificacao" element={<ClassificacaoFinanceira />} />
               <Route path="/classificacao/categorias" element={<CategoriaPage />} />
               <Route path="/classificacao/subcategorias" element={<SubcategoriaPage />} />
             </Routes>
           </main>
         </div>
-      </div>
-    </BrowserRouter>
-
+      </BrowserRouter>
+    </div>
   );
 }
 

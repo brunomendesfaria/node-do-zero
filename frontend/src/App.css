@@ -1,12 +1,30 @@
-.container {
-  display: flex;
-  height: 100vh;
+/* Reset para altura total */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background-color: #111;
   color: white;
+  font-family: Arial, sans-serif;
 }
 
+/* Wrapper para fullscreen */
+.fullscreen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Layout geral */
+.container {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
+
+/* Menu lateral */
 .menu {
-  width: 200px;
+  width: 220px;
   background-color: #222;
   padding: 20px;
   border-right: 1px solid #333;
@@ -18,20 +36,23 @@
 }
 
 .menu li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .menu a {
   color: white;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .menu a:hover {
   text-decoration: underline;
 }
 
+/* Conteúdo principal */
 .content {
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
+  background-color: #181818;
 }
