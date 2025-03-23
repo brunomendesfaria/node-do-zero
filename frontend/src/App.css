@@ -118,10 +118,7 @@ tbody tr:nth-child(even) {
 
 /* ===== Responsividade ===== */
 @media (max-width: 768px) {
-  table {
-    font-size: 12px;
-  }
-  
+    
 
   form {
     max-width: 100%;
