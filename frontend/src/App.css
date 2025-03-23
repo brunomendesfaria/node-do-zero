@@ -1,143 +1,37 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
-/* ===== Estilos do Formulário ===== */
-form {
+.container {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 400px;
-  margin: 20px auto;
+  height: 100vh;
+  background-color: #111;
+  color: white;
 }
 
-input {
-  padding: 8px;
-  border: 1px solid #555;
-  border-radius: 4px;
+.menu {
+  width: 200px;
   background-color: #222;
+  padding: 20px;
+  border-right: 1px solid #333;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  margin-bottom: 10px;
+}
+
+.menu a {
   color: white;
+  text-decoration: none;
 }
 
-/* ===== Estilos dos Botões ===== */
-button {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
+.menu a:hover {
+  text-decoration: underline;
 }
 
-button[type="submit"] {
-  background-color: #28a745;
-  color: white;
-  margin-left: 10px;
-}
-
-button[type="button"] {
-  background-color: #dc3545;
-  color: white;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-.form-buttons { 
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-/* ===== Estilos da Tabela ===== */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  border: 2px solid #555;     /* ✅ Borda externa da tabela */
-  border-radius: 6px;          /* (opcional) cantos arredondados */
-  overflow: hidden;            /* impede que o conteúdo vaze da borda */
-}
- 
-th, td {
-  padding: 1px;
-  border: 1px solid #bbb8b8;    /* ✅ Borda entre as células */
-  text-align: center;  
-}
-
-thead {
-  background-color:#555 ;
-  padding: 8px;
-  font-size: 14px;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #555;
-}
-
-/* ===== Responsividade ===== */
-@media (max-width: 768px) {
-  table {
-    font-size: 12px;
-    margin-top: 10px;
-  }
-
-  th, td {
-    padding: 4px 6px;
-  }
-
-  .form-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  input {
-    font-size: 14px;
-  }
-
-  button {
-    font-size: 13px;
-    padding: 6px 10px;
-  }
+.content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
 }
