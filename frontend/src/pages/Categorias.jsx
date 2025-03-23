@@ -23,7 +23,7 @@ function Categorias() {
 
   async function handleAddCategoria(e) {
     e.preventDefault();
-    await fetch("https://seu-backend/categorias", {
+    await fetch("https://node-do-zero-le2o.onrender.com/categorias", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nome }),
