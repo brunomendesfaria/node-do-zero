@@ -84,6 +84,30 @@ export async function financeRoutes(server) {
 
 
   // PARCEIROS
+  server.post('/parceiros', async (request, reply) => {
+    const {
+      nome, documento, email, telefone, cep,
+      logradouro, complemento, bairro, cidade,
+      uf, classificacao
+    } = request.body;
+
+    const id = crypto.randomUUID();
+
+    await sql`
+      INSERT INTO parceiros (
+        id, nome, documento, email, telefone, cep,
+        logradouro, complemento, bairro, cidade,
+        uf, classificacao
+      ) VALUES (
+        ${id}, ${nome}, ${documento}, ${email}, ${telefone}, ${cep},
+        ${logradouro}, ${complemento}, ${bairro}, ${cidade},
+        ${uf}, ${classificacao}
+      )
+    `;
+
+    return reply.status(201).send({ id });
+  });
+
   // PUT - Atualizar parceiro
   server.put('/parceiros/:id', async (request, reply) => {
     const { id } = request.params;
